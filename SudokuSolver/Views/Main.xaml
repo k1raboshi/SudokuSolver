@@ -1,0 +1,41 @@
+﻿<Window x:Class="SudokuSolver.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SudokuSolver"
+        mc:Ignorable="d"
+        Title="Main" Width="800" Height="465">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+
+        <Grid Width="272" Height="272" Grid.Column="0">
+
+            <Border BorderBrush="Black" BorderThickness="2"></Border>
+            <Grid Width="270" Height="270" ShowGridLines="True" Margin="2">
+                <ItemsControl ItemsSource="{Binding SudokuGrid}" >
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Value, Mode=TwoWay}" BorderThickness="1" Width="30" Height="30" MaxLength="1" TextAlignment="Center" FontSize="16"></TextBox>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Rows="9" Columns="9"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Button Content="Solve" Command="{Binding SolveSudokuCommand}" Height="32" Width="150" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,50"/>
+            <Button Content="Solve Sell" Height="32" Width="150" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,50,0,0"/>
+        </Grid>
+    </Grid>
+</Window>
